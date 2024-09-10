@@ -1,18 +1,35 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+import tkinter as tk
+from tkinter import messagebox
 
-# Other files and folders
-.settings/
+# Função para verificar o login
+def verificar_login():
+    usuario = entrada_usuario.get()
+    senha = entrada_senha.get()
+    
+    if usuario == "admin" and senha == "1234":
+        messagebox.showinfo("Login", "Login bem-sucedido!")
+    else:
+        messagebox.showerror("Login", "Usuário ou senha incorretos.")
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+# Configuração da janela principal
+janela = tk.Tk()
+janela.title("Tela de Login")
+janela.geometry("300x150")
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+# Rótulos e campos de entrada
+rotulo_usuario = tk.Label(janela, text="Usuário:")
+rotulo_usuario.pack(pady=5)
+entrada_usuario = tk.Entry(janela)
+entrada_usuario.pack(pady=5)
+
+rotulo_senha = tk.Label(janela, text="Senha:")
+rotulo_senha.pack(pady=5)
+entrada_senha = tk.Entry(janela, show="*")
+entrada_senha.pack(pady=5)
+
+# Botão de login
+botao_login = tk.Button(janela, text="Login", command=verificar_login)
+botao_login.pack(pady=20)
+
+# Iniciar o loop da interface gráfica
+janela.mainloop()
